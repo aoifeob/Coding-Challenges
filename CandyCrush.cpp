@@ -262,19 +262,19 @@ int main(){
         int r2 = chosen_move[2];
         int c2 = chosen_move[3];
         swap(board[c1+W*r1],board[c2+W*r2]); //swap two candies
+        //write the values to be swapped
+        ofstream output_file;
+        output_file.open ("cc_output.txt", ios::app);
+        if (output_file.is_open()){
+            output_file << r1 << "," << c1 << "," << r1 << "," << c2 <<"\n";
+            output_file.close;
+        }
+        else{
+            cout<<"Unable to open file.\n"
+            }
         is_match = true;
         while (is_match == true){ //while there is a match on the board
                score += candy_len^2; //add to score
-               //write the values to be swapped
-               ofstream output_file;
-               output_file.open ("cc_output.txt", ios::app);
-               if (output_file.is_open()){
-                   output_file << r1 << "," << c1 << "," << r1 << "," << c2 <<"\n";
-                   output_file.close;
-               }
-               else{
-                   cout<<"Unable to open file.\n"
-                   }
                board[c1+W*r1] = 0;
                board[c2+W*r2] = 0; //replace candies with 0
                if(there are non-zero values in higher rows){ //check if there are non-zero values in higher rows and buffer rows
